@@ -2,7 +2,9 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { PouchDBProvider } from "../providers/pouchdb-provider";
+// import { PouchDBProvider } from "../providers/pouchdb-provider";
+import { CouchbaseLiteProvider } from "../providers/couchbase-lite-provider";
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { PouchDBProvider } from "../providers/pouchdb-provider";
   ],
   providers: [
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PouchDBProvider
+    // PouchDBProvider,
+    CouchbaseLiteProvider
   ]
 })
 export class AppModule {}

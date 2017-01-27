@@ -1,10 +1,10 @@
 <ion-header>
     <ion-navbar>
         <ion-title>
-            PouchDB w/ Ionic 2
+            Couchbase Lite w/ Ionic 2
         </ion-title>
         <ion-buttons end>
-            <button ion-button icon-only (click)="insert()">
+            <button ion-button icon-only (click)="add()">
                 <ion-icon name="add"></ion-icon>
             </button>
         </ion-buttons>
@@ -12,9 +12,42 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-list>
-        <ion-item *ngFor="let item of items">
-            {{ item.title }}
-        </ion-item>
-    </ion-list>
+<!-- 	<button ion-button (click)="updateSync()">
+        Sync uri:&nbsp;&nbsp;{{syncUri}}
+        <em *ngIf="!syncUri">Não definida</em>
+    </button> -->
+    <ion-card>
+    	<h2>Notes:</h2>
+	    <ion-list>
+	        <ion-item *ngFor="let item of items">
+	            {{ item.title }}
+	        </ion-item>
+	    </ion-list>
+	</ion-card>
+    <ion-card>
+    	<h2>P2P Network Config</h2>
+		<ion-list>
+			<ion-item>
+				<ion-label stacked>DB Name:</ion-label>
+				<ion-input type="text" value="example"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label stacked>Local DB Url:</ion-label>
+				<ion-input type="text" [(ngModel)]="dbUrl"></ion-input>
+			</ion-item>
+			<ion-item>
+				<ion-label stacked>Peer DB Url:</ion-label>
+				<ion-input type="text" [(ngModel)]="peerDbUrl"></ion-input>
+			</ion-item>
+			<ion-item>
+				<button ion-button full (click)="updateSync()">
+					<em>Change Peer DB URL...</em>
+				</button>
+			</ion-item>
+		</ion-list>
+		<h3>Logs:</h3>
+    	<pre>
+    		{{logs}}
+    	</pre>
+    </ion-card>
 </ion-content>
